@@ -16,7 +16,7 @@ namespace CarDealershipProject.Controllers
 
         // GET: Vehicles
         //[Authorize]
-        public ActionResult Index(string searchString, string vehicleModel, string vehicleColor) //, decimal vehicleMSRP)
+        public ActionResult Index(string searchString, string vehicleModel, string vehicleColor, string vehiclePriceRangeStart, string vehiclePriceRangeEnd) //, decimal vehicleMSRP)
         {
             var vehicles = from m in db.Vehicles
                          select m;
@@ -38,6 +38,21 @@ namespace CarDealershipProject.Controllers
             if (!string.IsNullOrEmpty(vehicleColor))
             {
                 vehicles = vehicles.Where(x => x.Color == vehicleColor);
+            }
+
+            //double PriceRangeStart= Convert.ToDouble(vehiclePriceRangeStart);
+            //double PriceRangeEnd = Convert.ToDouble(vehiclePriceRangeEnd);
+
+            
+            if (!string.IsNullOrEmpty(vehiclePriceRangeStart))
+            {
+                double PriceRangeStart = Convert.ToDouble(vehiclePriceRangeStart);
+                vehicles = vehicles.Where(x => x.MSRP >= PriceRangeStart);
+                if(!string.IsNullOrEmpty(vehiclePriceRangeEnd))
+                {
+                    double PriceRangeEnd = Convert.ToDouble(vehiclePriceRangeEnd);
+                    vehicles = vehicles.Where(x => x.MSRP <= PriceRangeEnd);
+                }
             }
             //if (!decimal.GetBits(vehicleMSRP))
             //{

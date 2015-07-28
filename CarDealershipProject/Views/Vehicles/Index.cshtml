@@ -11,7 +11,7 @@
     @using (Html.BeginForm())
     {
     <p>
-        Make: @Html.TextBox("SearchString") Model: @Html.TextBox("vehicleModel") Color: @Html.TextBox("vehicleColor") MSRP: @Html.TextBox("vehicleMSRP") <br />
+        Make: @Html.TextBox("SearchString") Model: @Html.TextBox("vehicleModel") Color: @Html.TextBox("vehicleColor") MSRP Range: @Html.TextBox("vehiclePriceRangeStart") @Html.TextBox("vehiclePriceRangeEnd") <br />
         <input type="submit" value="Filter" />
     </p>
     }
