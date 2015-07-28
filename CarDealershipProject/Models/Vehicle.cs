@@ -12,7 +12,9 @@ namespace CarDealershipProject.Models
         public int Year { get; set; }
         public string Color { get; set; }
         public double MilePerGallon { get; set; }
-        public decimal MSRP { get; set; }
+        public double MSRP { get; set; }
+
+        public string VehicleImage { get; set; }
     }
 
     public class VehicleDBContext : DbContext
